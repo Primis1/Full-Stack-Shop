@@ -32,6 +32,7 @@
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/react": "^16.0.0",
     "@types/bcrypt": "^5.0.2",
+    "@types/jest": "^29.5.12",
     "@types/node": "^22.2.0",
     "@types/qs": "^6.9.15",
     "axios": "^1.7.3",
