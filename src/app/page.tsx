@@ -1,8 +1,6 @@
 import Header from "@/widgets/ui/header/header";
-import { fetchData } from "../shared/functions/fetch-data";
 
 export default async function Home() {
-
   return (
     <div>
       <Header />
