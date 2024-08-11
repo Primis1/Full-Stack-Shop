@@ -6,9 +6,9 @@ const httpHeader = {
 };
 
 export async function fetchData<T>(
-  base: string = baseUrl, 
   endpoint: string,
   headers: Record<string, string> = httpHeader,
+  base: string = baseUrl, 
   revalidate?: number
 ) {
   const url = base + endpoint;
