@@ -4,7 +4,7 @@ type Request = {
 };
 
 interface DeliverData extends Request {
-  body: any;
+  body: unknown;
 }
 
 class FetchDataClass {
@@ -42,7 +42,7 @@ class FetchDataClass {
     });
     return this.handleResponse(res);
   }
-  private async handleResponse<T>(response: Response) {
+  private async handleResponse(response: Response) {
     if (!response.ok) {
       throw new Error("HTTP request went wrong!!!");
     }
