@@ -1,25 +1,52 @@
-const baseUrl = "https://pokeapi.co/api/v2/";
-
-const httpHeader = {
-  "Content-Type": "application/json",
-  Accept: "application/json",
+type Request = {
+  url: string;
+  headers?: Record<string, string>;
 };
 
-export async function fetchData<T>(
-  endpoint: string,
-  headers: Record<string, string> = httpHeader,
-  base: string = baseUrl, 
-  revalidate?: number
-) {
-  const url = base + endpoint;
-  try {
-    const res = await fetch(url, {headers: headers, next: {revalidate: revalidate}})
-    if (!res.ok) {
-      throw new Error("Http request, went wrong!!!")
+interface DeliverData extends Request {
+  body: unknown;
+}
+
+class FetchDataClass {
+  private baseURL: string = "https://pokeapi.co/api/v2/";
+  private headers: Record<string, string> = {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  };
+  async get({ url, headers = this.headers }: Request) {
+    const res = await fetch(this.baseURL + url, {
+      headers: headers,
+    });
+    return this.handleResponse(res);
+  }
+
+  async post({ url, headers, body }: DeliverData) {
+    const res = await fetch(this.baseURL + url, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(body),
+    });
+    return this.handleResponse(res);
+  }
+  async put({ url, headers, body }: DeliverData) {
+    const res = await fetch(this.baseURL + url, {
+      method: "PUT",
+      headers: headers,
+      body: JSON.stringify(body),
+    });
+    return this.handleResponse(res);
+  }
+  async delete(url: string) {
+    const res = await fetch(this.baseURL + url, {
+      method: "delete",
+    });
+    return this.handleResponse(res);
+  }
+  private async handleResponse(response: Response) {
+    if (!response.ok) {
+      throw new Error("HTTP request went wrong!!!");
     }
-    const data: T = await res.json() 
-    return data 
-  } catch (err) {
-    console.error("Error during fetch request: \n", err)
+    return await response.json();
   }
 }
+export const fetchData = new FetchDataClass();
