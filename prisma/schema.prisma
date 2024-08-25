@@ -1,5 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
@@ -12,6 +10,53 @@ datasource db {
 }
 
 model User {
-  id   String @id
-  name String
+  userId   String @id @default(uuid())
+  Fname String
+  Lname String
+  email String @unique
+  cart  Cart?
+  order Order[]
+}
+
+model Order {
+  orderId String @id @default(uuid())
+  //
+  user User @relation(fields: [userId], references: [userId])
+  //
+  userId String @unique
+  totalAmount Int
+  createdAt DateTime @default(now()) 
+  items Product[]
+}
+
+model Cart {
+  cartId String @id @default(uuid())
+  //
+  user User @relation(fields: [userId], references: [userId])
+  //
+  userId String @unique
+  cartItems CartItem[]
+}
+
+model CartItem {
+  cartItemId Int @id @default(autoincrement())
+  cart Cart @relation(fields: [cartId], references: [cartId])
+  cartId String
+  quantity Int
+  //
+  product Product @relation(fields: [productId], references: [productId])
+  productId String
+}
+
+model Product {
+  productId String @id @default(uuid())
+  //
+  order Order[]
+  cartItem CartItem[]
+  //  
+  type String
+  price Int
+  size Int
+  brand String
+
 }
