@@ -1,16 +1,18 @@
+export type ID = string;
+export type Role = "ADMIN" | "USER";
+
 export type Order = {
-    orderId     :string   
-    userId      :string
-    totalAmount : number
-    createdAt   : string
-    items       :string 
-}
+  orderId: ID;
+  userId: ID;
+  totalAmount: number;
+  createdAt: string;
+  items: string;
+};
 export type UserInfo = {
-    userId: string
-    Fname: string
-    Lname: string
-    email: string
-    image?: string
-    orders?:  Order[]
-    
-}
+  userId: ID;
+  Fname: string;
+  Lname: string;
+  email: string;
+  image?: string;
+//   orders?: Order[];
+};
