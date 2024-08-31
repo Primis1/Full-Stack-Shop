@@ -1,20 +1,18 @@
 import { z } from "zod";
 
-export type Role = "ADMIN" | "USER";
-
-const UserId = z.string().brand("UserId");
-export type UserId = z.infer<typeof UserId>;
+export type UserId = string;
 
 const OrderId = z.string().brand("OrderId");
 export type OrderId = z.infer<typeof OrderId>;
 
+export type Role = keyof typeof Roles
 export type UserInfo = {
   userId: UserId;
   Fname: string;
   Lname: string;
   email: string;
+  role: Role;
   image?: string;
-  // orders?: Order[];
 };
 export type Order = {
   orderId: OrderId;
@@ -23,3 +21,9 @@ export type Order = {
   createdAt: string;
   items: string;
 };
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+enum Roles {
+  ADMIN,
+  USER,
+}

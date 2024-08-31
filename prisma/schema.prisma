@@ -14,7 +14,7 @@ model User {
   Lname  String
   image  String?
   email  String  @unique
-  role ROLE @default(USER)
+  role   ROLE    @default(USER)
   cart   Cart?
   orders Order[]
 }
@@ -58,6 +58,6 @@ model Product {
 }
 
 enum ROLE {
-  ADMIN 
+  ADMIN
   USER
 }

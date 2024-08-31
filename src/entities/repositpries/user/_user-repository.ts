@@ -2,27 +2,25 @@ import { UserId, UserInfo } from "@/kernel/_domain/user";
 import { dbClient } from "@/shared/functions";
 
 class userRepository {
-  async createUser(user: UserInfo): Promise<UserInfo> {
-    return await dbClient.user.create({
+  async createUser(user: UserInfo) {
+     await dbClient.user.create({
       data: user,
     });
   }
 
-  async getAllUsers(): Promise<UserInfo[]> {
+  async getAllUsers() {
     return await dbClient.user.findMany();
   }
 
-  async getUserById(id: UserId): Promise<UserInfo | undefined> {
+  async getUserById(id: UserId) {
     return await dbClient.user
-      .findUnique({ where: {id} })
+      .findUnique({ where: { userId: id } })
       .then((u) => u ?? undefined);
   }
 
   async deleteUserById(id: UserId) {
-    await dbClient.user.delete({ where: {id} });
+    await dbClient.user.delete({ where: { userId: id } });
   }
 }
 
 export const userMethods = new userRepository();
-
-userMethods.deleteUserById("kasjdfnsjdfn");
