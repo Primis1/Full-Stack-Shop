@@ -1,29 +1,28 @@
-import { ID, UserInfo } from "@/kernel/_domain/user";
+import { UserId, UserInfo } from "@/kernel/_domain/user";
 import { dbClient } from "@/shared/functions";
-import { Prisma } from "@prisma/client";
 
-class productRepository {
+class userRepository {
   async createUser(user: UserInfo): Promise<UserInfo> {
     return await dbClient.user.create({
       data: user,
     });
   }
 
-  async getAllUsers(where?: Prisma.UserWhereUniqueInput): Promise<UserInfo[]> {
-    return await dbClient.user.findMany({ where });
+  async getAllUsers(): Promise<UserInfo[]> {
+    return await dbClient.user.findMany();
   }
 
-  async getUserById(id: ID): Promise<UserInfo | undefined> {
+  async getUserById(id: UserId): Promise<UserInfo | undefined> {
     return await dbClient.user
-      .findUnique({ where: id })
+      .findUnique({ where: {id} })
       .then((u) => u ?? undefined);
   }
 
-  async deleteUserById(id: ID) {
-    await dbClient.user.delete({ where: id });
+  async deleteUserById(id: UserId) {
+    await dbClient.user.delete({ where: {id} });
   }
 }
 
-export const userMethods = new productRepository();
+export const userMethods = new userRepository();
 
 userMethods.deleteUserById("kasjdfnsjdfn");

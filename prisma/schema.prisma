@@ -14,6 +14,7 @@ model User {
   Lname  String
   image  String?
   email  String  @unique
+  role ROLE @default(USER)
   cart   Cart?
   orders Order[]
 }
@@ -54,4 +55,9 @@ model Product {
   image     String[]
   price     Int
   cartItems CartItem[] // Back relation (not required but useful)
+}
+
+enum ROLE {
+  ADMIN 
+  USER
 }
