@@ -1,3 +1,3 @@
-export * from "./skeleton/skeleton"
-export * from "./theme-toggler/theme-toggler"
-export * from "./categories/categories"
+export * from "./ui/skeleton/skeleton"
+export * from "./ui/theme-toggler/theme-toggler"
+export * from "./ui/categories/categories"

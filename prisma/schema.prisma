@@ -12,9 +12,11 @@ model User {
   userId String  @id @default(uuid())
   Fname  String
   Lname  String
+  image  String?
   email  String  @unique
+  role   ROLE    @default(USER)
   cart   Cart?
-  orders Order[] 
+  orders Order[]
 }
 
 model Order {
@@ -39,14 +41,24 @@ model CartItem {
   cartId     String
   quantity   Int
   product    Product @relation(fields: [productId], references: [productId])
-  productId  String
+  productId  String  @unique
+
+  @@unique([cartId, productId])
 }
 
 model Product {
   productId String     @id @default(uuid())
-  type      String
+  availible Boolean
   price     Int
-  size      Int
   brand     String
+  category  String
+  name      String
+  size      String[]
+  image     String[]
   cartItems CartItem[] 
+}
+
+enum ROLE {
+  ADMIN
+  USER
 }
