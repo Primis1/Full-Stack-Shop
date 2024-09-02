@@ -13,7 +13,6 @@ export type UserInfo = {
   Lname: string;
   email: string;
   role: Role;
-  // orders?: Order[];
   image?: string;
 };
 

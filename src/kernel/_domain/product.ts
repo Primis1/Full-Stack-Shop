@@ -4,16 +4,17 @@ export type ProductId = string;
 
 export type ProductInfo = {
   productId: string;
-  name: string;
-  category: string;
+  availible: boolean;
+  price: number;
   brand: string;
+  category: string;
+  name: string;
   size: string[];
   image: string[];
-  price: number;
 };
-
 export const ProductInfoSchema = z.object({
   productId: z.string(),
+  avalible: z.boolean(),
   name: z.string(),
   category: z.string(),
   brand: z.string(),
