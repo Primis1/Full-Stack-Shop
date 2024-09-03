@@ -1,6 +1,6 @@
 import * as React from "react";
 import Image from "next/image";
-import { ThemeToggler } from "@/entities";
+import { ModeToggle } from "@/entities";
 import {
   Button,
   DropdownMenu,
@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  Title,
 } from "@/shared/ui";
 import { Link } from "lucide-react";
 
@@ -27,6 +28,7 @@ export default function Header() {
               />
               Crystal
             </a>
+            <Title text={"sdfjhsdni"} />
             <a className="text-lg hidden items-center dark:flex" href="/">
               <Image
                 className="mr-3"
@@ -39,7 +41,7 @@ export default function Header() {
             </a>
             <div>
               <div className={`flex w-300 space-x-10 pl-10`}>
-                <ThemeToggler />
+                <ModeToggle />
                 <>
                   <DropdownMenu>
                     <DropdownMenuTrigger>

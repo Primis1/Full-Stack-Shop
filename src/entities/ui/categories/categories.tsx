@@ -5,8 +5,7 @@ type Props = {
   className: string;
 };
 
-const categories = ['Pizzas', 'Combos', 'Snacks', 'Cocktails', 'Coffee', 'Drinks', 'Desserts'];
-
+const clothingCategories = ["Outerwear", "Tops", "Bottoms", "Dresses", "Activewear", "Footwear", "Accessories"];
 
 export const Categories: React.FC<Props> = ({ className }) => {
   const activeIndex = 0;
@@ -14,7 +13,7 @@ export const Categories: React.FC<Props> = ({ className }) => {
     <div
       className={cn(" inline-flex gap-2 bg-gray-50 p-1 rounded-md", className)}
     >
-      {categories.map((item, i) => (
+      {clothingCategories.map((item, i) => (
         <Link
           key={item}
           className={cn(

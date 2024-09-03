@@ -50,6 +50,7 @@ model Product {
   productId String     @id @default(uuid())
   name      String
   category  String
+  type      String
   brand     String
   size      String[]
   image     String[]

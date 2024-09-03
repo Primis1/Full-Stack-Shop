@@ -3,14 +3,22 @@ import React from "react";
 
 type TitleSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
+type Variant = "pm" | "sec";
+
 interface Props {
   size?: TitleSize;
+  variant?: Variant;
   text: string;
-  className: string;
+  className?: string;
 }
 
-export const Title: React.FC<Props> = ({ size = "sm", text, className }) => {
-  const mapTagBySize = {
+export const Title: React.FC<Props> = ({
+  size = "sm",
+  text,
+  className,
+  variant = "pm",
+}) => {
+  const objectTagBySize = {
     xs: "h5",
     sm: "h4",
     md: "h3",
@@ -19,7 +27,7 @@ export const Title: React.FC<Props> = ({ size = "sm", text, className }) => {
     "2xl": "h1",
   };
 
-  const mapClassNameBySize = {
+  const objectClassNameBySize = {
     xs: "text-[16px] ys-text",
     sm: "text-[22px] ys-text",
     md: "text-[26px] ys-text",
@@ -28,8 +36,20 @@ export const Title: React.FC<Props> = ({ size = "sm", text, className }) => {
     "2xl": "text-[48px] ys-display",
   };
 
-  return React.createElement(mapTagBySize[size], {
-    className: cn(mapClassNameBySize[size], className),
-    text,
-  });
+  const objectVariant = {
+    pm: "text-primary",
+    sec: "text-secondary",
+  };
+
+  return React.createElement(
+    objectTagBySize[size],
+    {
+      className: cn(
+        objectClassNameBySize[size],
+        objectVariant[variant],
+        className
+      ),
+    },
+    text
+  );
 };
