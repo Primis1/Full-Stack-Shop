@@ -48,7 +48,7 @@ model CartItem {
 
 model Product {
   productId String     @id @default(uuid())
-  availible Boolean
+  quantity  Int @default(1)
   price     Int
   brand     String
   category  String

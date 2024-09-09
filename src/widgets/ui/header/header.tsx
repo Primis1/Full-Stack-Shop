@@ -1,6 +1,6 @@
 import * as React from "react";
 import Image from "next/image";
-import { ThemeToggler } from "@/entities";
+import { ThemeToggler } from "@/entities/ui";
 import {
   Button,
   DropdownMenu,

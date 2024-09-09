@@ -4,7 +4,7 @@ export type ProductId = string;
 
 export type ProductInfo = {
   productId: string;
-  availible: boolean;
+  quantity: number
   price: number;
   brand: string;
   category: string;
