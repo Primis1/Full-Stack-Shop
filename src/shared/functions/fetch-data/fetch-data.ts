@@ -38,7 +38,7 @@ class FetchDataClass {
   }
   async delete(url: string) {
     const res = await fetch(this.baseURL + url, {
-      method: "delete",
+      method: "DELETE",
     });
     return this.handleResponse(res);
   }

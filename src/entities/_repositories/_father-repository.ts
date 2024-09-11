@@ -3,8 +3,8 @@ export class Father {
     try {
       const res = await prismaMethod;
       return res;
-    } catch (error) {
-      return error
+    } catch (e) {
+      return console.log(e)
     }
   }
 }

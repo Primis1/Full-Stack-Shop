@@ -8,11 +8,11 @@ export type OrderId = z.infer<typeof OrderId>;
 export type Role = keyof typeof Roles;
 
 export type UserInfo = {
-  userId: UserId;
+  userId?: UserId;
   Fname: string;
   Lname: string;
   email: string;
-  role: Role;
+  role?: Role;
   image?: string;
 };
 

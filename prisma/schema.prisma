@@ -13,6 +13,7 @@ model User {
   Fname  String
   Lname  String
   image  String?
+  password String
   email  String  @unique
   role   ROLE    @default(USER)
   cart   Cart?
