@@ -4,7 +4,7 @@ const mockData = { name: "bulbasaur" };
 
 global.fetch = jest.fn() as jest.Mock;
 
-describe("fetchData", () => {
+describe("Fetch Data Class", () => {
   beforeEach(() => {
     (fetch as jest.Mock).mockClear();
   });

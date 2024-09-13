@@ -9,15 +9,15 @@ datasource db {
 }
 
 model User {
-  userId String  @id @default(uuid())
-  Fname  String
-  Lname  String
-  image  String?
+  userId   String  @id @default(uuid())
+  Fname    String
+  Lname    String
+  image    String?
   password String
-  email  String  @unique
-  role   ROLE    @default(USER)
-  cart   Cart?
-  orders Order[]
+  email    String  @unique
+  role     ROLE    @default(USER)
+  cart     Cart?
+  orders   Order[]
 }
 
 model Order {
@@ -49,14 +49,14 @@ model CartItem {
 
 model Product {
   productId String     @id @default(uuid())
-  quantity  Int @default(1)
+  quantity  Int        @default(1)
   price     Int
   brand     String
   category  String
   name      String
   size      String[]
   image     String[]
-  cartItems CartItem[] 
+  cartItems CartItem[]
 }
 
 enum ROLE {

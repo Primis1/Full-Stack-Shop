@@ -21,9 +21,9 @@ class ProductRepo extends Father {
   }
 
   async getProduct(
-    where: Prisma.ProductWhereUniqueInput
+    where: string
   ): Promise<ProductInfo | unknown> {
-    return this.protectionMethod(dbClient.product.findUnique({ where: where }));
+    return this.protectionMethod(dbClient.product.findUnique({ where: {productId: where} }));
   }
 
   async deleteProduct(id: string) {

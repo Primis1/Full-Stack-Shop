@@ -2,8 +2,10 @@ import { UserId, UserInfo } from "@/kernel/_domain/user";
 import { dbClient } from "@/shared/functions";
 import { Father } from "../_father-repository";
 import { Prisma } from "@prisma/client";
+import { seal } from "@/shared/decorators";
 
-class userRepository extends Father {
+@seal
+class UserRepository extends Father {
   async createUser(user: UserInfo) {
     return this.protectionMethod(
       dbClient.user.create({
@@ -16,15 +18,15 @@ class userRepository extends Father {
     return this.protectionMethod(dbClient.user.findMany({ where: where }));
   }
 
-  async getUserById(id: UserId) {
+  async getUser(id: UserId) {
     return this.protectionMethod(
       dbClient.user.findUnique({ where: { userId: id } })
     );
   }
 
-  async deleteUserById(id: UserId) {
+  async deleteUser(id: UserId) {
     this.protectionMethod(dbClient.user.delete({ where: { userId: id } }));
   }
 }
 
-export const userMethods = new userRepository();
+export const userRepo = new UserRepository();
